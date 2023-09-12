@@ -136,6 +136,7 @@ C:\Users\%USERNAME%\AppData\ Roaming\Microsoft\Windows\Recent\CustomDestinations
 	- **ID 4672** - Special Logon events where administrators logs in.
 	- **ID 4625** - Failed Logon events.
 	- **ID 4634** - Logoffs from the current session.
+ - 	- **ID 4720** - New user was created
 
 These event logs can be found at
 ```md
@@ -163,11 +164,21 @@ Find the imageinfo of the file,
 ```bash
 volatility -f /path/to/file.mem imageinfo
 ```
-
+```bash
+cd /volatility/
+python vol.py -f /path/to/file.mem imageinfo
+```
 List the processes of a system,
 
 ```bash
 volatility -f /path/to/file.mem --profile=PROFILE pslist
+```
+List the number of times processes running on a system,
+
+```bash
+volatility -f /path/to/file.mem --profile=PROFILE pslist | grep “<PROCESS>”
+
+python vol.py -f /home/ubuntu/Desktop/Volatility\ Exercise/memdump1.mem --profile=Win7SP1x64 pslist | grep “svchost.exe”
 ```
 
 View the process listing in tree form,
@@ -222,6 +233,19 @@ Identify any files on the system from the memory image,
 
 ```bash
 volatility -f memdump.mem --profile=PROFILE filescan
+```
+Scan Network Connections
+
+```bash
+volatility -f memdump.mem --profile=PROFILE netscan
+```
+
+Process dump - Dump the process with PID and set Directory
+
+```bash
+volatility -f memdump.mem --profile=<PROFILE> procdump -p <PID> -D <DIRECTORY_OUTPUT>
+
+e.g. python vol.py -f /home/ubuntu/Desktop/Volatility\ Exercise/memdump2.mem --profile=Win7SP1x64 procdump -p 2940 -D /home/ubuntu/Desktop/
 ```
 
 8. **Metadata** - Data about data
