@@ -277,6 +277,18 @@ To search for a destination IP (dst) address that this source IP address made a 
 index="botsv1" src="127.0.0.1" dst="X.X.X.X"
 ```
 
+To search for registry key created from backdoor user
+
+```md
+index="botsv1" Category ="_"
+Hover over Category
+```
+To cross reference users on local system
+
+```md
+index="botsv1" net user wmic
+```
+
 To find Sysmon logs that contain 'cmdline' and the original filename: 
 
 ```md
