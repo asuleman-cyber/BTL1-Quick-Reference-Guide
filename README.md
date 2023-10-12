@@ -136,8 +136,9 @@ C:\Users\%USERNAME%\AppData\ Roaming\Microsoft\Windows\Recent\CustomDestinations
 	- **ID 4672** - Special Logon events where administrators logs in.
 	- **ID 4625** - Failed Logon events.
 	- **ID 4634** - Logoffs from the current session.
- - 	- **ID 4720** - New user was created
-
+  	- **ID 4720** - New user was created
+     	- **ID 4657** - Registry Key modified
+-
 These event logs can be found at
 ```md
 C:\Windows\System32\winevt\Logs
