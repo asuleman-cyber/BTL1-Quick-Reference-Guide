@@ -407,11 +407,16 @@ Set-ExecutionPolicy Bypass -Scope CurrentUser
 ```
 
 ## **DeepBlueCLI** - PowerShell script that was created by SANS to aid with the investigation and triage of Windows Event logs.
+## Usage:
+
+`.\DeepBlue.ps1 <event log name> <evtx filename>`
 
 To process log.evtx,
 
 ```powershell
 ./DeepBlue.ps1 log.evtx
+or
+`.\DeepBlue.ps1 .\evtx\new-user-security.evtx`
 ```
 
 DeepBlue will point at the local system's Security or System event logs directly,
@@ -419,29 +424,13 @@ DeepBlue will point at the local system's Security or System event logs directly
 ```powershell
 # Start the Powershell as Administrator and navigate into the DeepBlueCli tool directory, and run the script
 
+`.\DeepBlue.ps1`
+or
 ./DeepBlue.ps1 -log security
+
+# Process local Windows system event log:
 ./DeepBlue.ps1 -log system
 
 # if the script is not running, then we need to bypass the execution policy
 Set-ExecutionPolicy Bypass -Scope CurrentUser
 ```
-
-## Usage:
-
-`.\DeepBlue.ps1 <event log name> <evtx filename>`
-
-### Process local Windows security event log (PowerShell must be run as Administrator):
-
-`.\DeepBlue.ps1`
-
-or:
-
-`.\DeepBlue.ps1 -log security`
-
-### Process local Windows system event log:
-
-`.\DeepBlue.ps1 -log system`
-
-### Process evtx file:
-
-`.\DeepBlue.ps1 .\evtx\new-user-security.evtx`
