@@ -1,7 +1,5 @@
 # BTL1_Cheatsheet
 
-*These notes will come handy in exam.*
-
 ## SOC Fundamentals
 
 List of common ports.
@@ -43,9 +41,9 @@ Outlook/Thunderbird/Sublime Text
 - [ ] Domain Names
 - Full URL contains both domain and specific page information
 3. **File Artifacts** :
-
 - [ ] Attachment Name
 - [ ] MD5, SHA1, SHA256 Hash Value
+
 
 ### Analyzing Artifacts
 
@@ -279,9 +277,25 @@ To search for a destination IP (dst) address that this source IP address made a 
 index="botsv1" src="127.0.0.1" dst="X.X.X.X"
 ```
 
+To find Sysmon logs that contain 'cmdline' and the original filename: 
+
+```md
+index="sysmon" EventID=13 CommandLine=*
+```
+
+
 ## Incident Response
 
 1. **Network Analysis** - use Wireshark to import .pcap, .pcapng files.
+	**Display Filters:**
+		- Display filters help isolate important traffic from network noise.
+		- Filter by protocol or header field, e.g., `udp` or `http.request`.
+		- Filter by header field values, e.g., `tcp.port == 80`.
+		- Combine filters with logical operators (`&&`, `||`) and use brackets for grouping.
+  	**Exam Specific Filters:**
+  - To filter by TCP SYN network scan originating from 172.16.0.2: `ip.src == 172.16.0.2 && tcp.flags.syn == 1`.
+
+...
 
 2. **CMD** : Command prompt can be used to view the valuable information,
 
