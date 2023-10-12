@@ -288,12 +288,14 @@ index="sysmon" EventID=13 CommandLine=*
 
 1. **Network Analysis** - use Wireshark to import .pcap, .pcapng files.
 	**Display Filters:**
+   ```bash
 		- Display filters help isolate important traffic from network noise.
 		- Filter by protocol or header field, e.g., `udp` or `http.request`.
 		- Filter by header field values, e.g., `tcp.port == 80`.
 		- Combine filters with logical operators (`&&`, `||`) and use brackets for grouping.
+   ```
   	**Exam Specific Filters:**
-  - To filter by TCP SYN network scan originating from 172.16.0.2: `ip.src == 172.16.0.2 && tcp.flags.syn == 1`.
+To filter by TCP SYN network scan originating from 172.16.0.2: `ip.src == 172.16.0.2 && tcp.flags.syn == 1`.
 
 ...
 
@@ -404,7 +406,7 @@ Changing the Execution Policy applied to our user,
 Set-ExecutionPolicy Bypass -Scope CurrentUser
 ```
 
-4. **DeepBlueCLI** - PowerShell script that was created by SANS to aid with the investigation and triage of Windows Event logs.
+## **DeepBlueCLI** - PowerShell script that was created by SANS to aid with the investigation and triage of Windows Event logs.
 
 To process log.evtx,
 
@@ -423,3 +425,23 @@ DeepBlue will point at the local system's Security or System event logs directly
 # if the script is not running, then we need to bypass the execution policy
 Set-ExecutionPolicy Bypass -Scope CurrentUser
 ```
+
+## Usage:
+
+`.\DeepBlue.ps1 <event log name> <evtx filename>`
+
+### Process local Windows security event log (PowerShell must be run as Administrator):
+
+`.\DeepBlue.ps1`
+
+or:
+
+`.\DeepBlue.ps1 -log security`
+
+### Process local Windows system event log:
+
+`.\DeepBlue.ps1 -log system`
+
+### Process evtx file:
+
+`.\DeepBlue.ps1 .\evtx\new-user-security.evtx`
