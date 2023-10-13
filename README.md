@@ -418,8 +418,9 @@ Changing the Execution Policy applied to our user,
 Set-ExecutionPolicy Bypass -Scope CurrentUser
 ```
 
-## **DeepBlueCLI** - PowerShell script that was created by SANS to aid with the investigation and triage of Windows Event logs.
-## Usage:
+### **DeepBlueCLI** 
+PowerShell script that was created by SANS to aid with the investigation and triage of Windows Event logs.
+#### Usage:
 
 `.\DeepBlue.ps1 <event log name> <evtx filename>`
 
