@@ -295,6 +295,11 @@ To find Sysmon logs that contain 'cmdline' and the original filename:
 index="sysmon" EventID=13 CommandLine=*
 ```
 
+'stats count' functionality to identify unique destination IP addresses a file is connecting to
+```md
+index="botsv1" sourcetype=xmlwineventlog osk.exe DestinationPort=6892
+| stats count by DestinationIp
+```
 
 ## Incident Response
 
